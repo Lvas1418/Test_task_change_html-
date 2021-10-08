@@ -1,19 +1,20 @@
 package service
 
 import (
-"fmt"
+	"fmt"
 	"html/template"
+	"os"
 )
 
 type Service struct {
 }
 
 func NewService() *Service {
-	return &Service{
-	}
+	return &Service{}
 }
-func (s*Service) ReadFile()(*template.Template, error){
-	tmpl, err := template.ParseFiles("../template/template.html")
+func (s *Service) ReadFile() (*template.Template, error) {
+	path := os.Getenv("TEMPLATE_PATH")
+	tmpl, err := template.ParseFiles(path + "template/template.html")
 	if err != nil {
 		fmt.Println(err)
 	}
