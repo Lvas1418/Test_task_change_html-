@@ -2,11 +2,11 @@ package app
 
 import (
 	"errors"
+	"github.com/Lvas1418/Test_task_change_html-/testTask/internal/config"
 	"github.com/Lvas1418/Test_task_change_html-/testTask/internal/httpx"
 	"github.com/Lvas1418/Test_task_change_html-/testTask/internal/server"
-	"log"
-	"github.com/Lvas1418/Test_task_change_html-/testTask/internal/config"
 	"github.com/Lvas1418/Test_task_change_html-/testTask/internal/service"
+	"log"
 	"net/http"
 )
 
