@@ -1,4 +1,4 @@
-#App for display  parameter from URL
+App for display  parameter from URL
 
 This application starts an http server, and greets the user by name, which is entered as a URL parameter.
 For example, following the path: `http: //0.0.0.0: 2000 / Bob`, you will see" Hello, Bob ".
