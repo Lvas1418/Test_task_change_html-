@@ -6,8 +6,8 @@ import (
 )
 
 type ErrResponse struct {
-	HTTPStatusCode int   `json:"-"` // http response status code
-	StatusText string `json:"status"`          // user-level status message
+	HTTPStatusCode int    `json:"-"`      // http response status code
+	StatusText     string `json:"status"` // user-level status message
 }
 
 func (e *ErrResponse) Render(w http.ResponseWriter, r *http.Request) error {

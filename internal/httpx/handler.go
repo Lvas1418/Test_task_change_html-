@@ -26,6 +26,7 @@ func (h *Handler) Init() *Router {
 	router := NewRouter()
 	return router
 }
+
 //ViewData is the structure for the data shown on the site page
 type ViewData struct {
 	Title string
@@ -42,8 +43,11 @@ func getName(w http.ResponseWriter, r *http.Request) {
 	if tmpl == nil {
 		tmpl, err = handler.Service.ReadFile()
 		if err != nil {
-			log.Printf("reading template from file failed: %s",err)
-			render.Render(w, r,ErrInternalServerError())
+			log.Printf("reading template from file failed: %s", err)
+			if err:=render.Render(w, r, ErrInternalServerError()); err!=nil{
+				log.Printf("failed to send response about an error: %s", err)
+			}
+
 		}
 	}
 	viewData := ViewData{
@@ -52,7 +56,9 @@ func getName(w http.ResponseWriter, r *http.Request) {
 	}
 	err = tmpl.Execute(w, viewData)
 	if err != nil {
-		log.Printf("feiled to applie the parsed template: %s",err)
-		render.Render(w, r,ErrInternalServerError())
+		log.Printf("feiled to applie the parsed template: %s", err)
+		if err:=render.Render(w, r, ErrInternalServerError()); err!=nil{
+			log.Printf("failed to send response about an error: %s", err)
+		}
 	}
 }
